@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: d2a202e99d6964b4bb4216b5684a9be0
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - Capture Smallz
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 6244ddbce9a1cb744844573e6026b7a7, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
