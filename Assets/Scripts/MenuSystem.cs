@@ -4,9 +4,14 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 public class MenuSystem : MonoBehaviour
 {
-    public void LoadScene(int id)
+    public void LoadGame()
     {
-        SceneManager.LoadScene(1);
+        if (!PlayerPrefs.HasKey("level"))
+        {
+            PlayerPrefs.SetInt("level", 1);
+        }
+        SceneManager.LoadScene(PlayerPrefs.GetInt("level", 1));
+        // made Acync
     }
     public void Exit()
     {
