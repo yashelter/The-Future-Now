@@ -7,6 +7,9 @@ public class PlayerController : MonoBehaviour
     public controlTypes controlType;
     public float moveSpeed;
     public float jumpForce;
+    public float landMultiply;
+    
+        
     public Joystick movingJoystick;
     public Joystick attackJoystick;
     public Transform feetPos1;
@@ -20,6 +23,7 @@ public class PlayerController : MonoBehaviour
     private bool isRunning = false;
     private bool isRotated = false;
     private bool isJumping = false;
+    private bool isLanding = false;
     private float timer = 0f;
     private float timerTime = 0.5f;
     private float minX = 0.4f;
@@ -81,7 +85,14 @@ public class PlayerController : MonoBehaviour
         }
         if(Mathf.Abs(x) > minX)
         {
-            playerRB.velocity = new Vector3(x * moveSpeed, playerRB.velocity.y, 0);
+            if (isJumping || isLanding)
+            {
+                playerRB.velocity = new Vector3((x * moveSpeed) / landMultiply, playerRB.velocity.y, 0);
+            }
+            else
+            {
+                playerRB.velocity = new Vector3(x * moveSpeed, playerRB.velocity.y, 0);
+            }
         }
         if (isJumping && timer <= 0)
         {
@@ -100,6 +111,21 @@ public class PlayerController : MonoBehaviour
             playerAnimator.SetTrigger("Jump");
             playerAnimator.SetBool("Jumping", false);
             timer = timerTime;
+        }
+        else if(!(Physics2D.OverlapCircle(feetPos2.position, .3f, ground) &&
+            (Physics2D.OverlapCircle(feetPos1.position, .3f, ground)))
+             && Mathf.Abs(playerRB.velocity.y) > 5f && !isJumping && !isLanding)
+        {
+            
+            isLanding = !isLanding;
+            playerAnimator.SetTrigger("Land");
+            playerAnimator.SetBool("Landed", !isLanding);
+        }
+        else if((Physics2D.OverlapCircle(feetPos2.position, .1f, ground) || 
+            (Physics2D.OverlapCircle(feetPos1.position, .1f, ground))) && isLanding)
+        {
+            isLanding = !isLanding;
+            playerAnimator.SetBool("Landed", !isLanding);
         }
 
     }
