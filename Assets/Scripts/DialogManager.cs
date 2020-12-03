@@ -14,6 +14,8 @@ public class DialogManager : MonoBehaviour
     public Queue<string> dialogSentences = new Queue<string>();
 
     public Animator dialogAnimator;
+    private bool coroutineEnded = true;
+    private string lastSentence;
     private void OnTriggerEnter2D(Collider2D collision)
     {
         dialogAnimator.SetBool("isActive", true);
@@ -46,21 +48,34 @@ public class DialogManager : MonoBehaviour
         {
             written += symbol;
             dialogText.text = written;
-            yield return null;
-            yield return null;
-            yield return null;
+            yield return new WaitForSeconds(.05f);
+            // звуке
         }
+        coroutineEnded = true;
     }
     public void GetDialog()
     {
-        if(dialogSentences.Count > 0)
+        StopAllCoroutines();
+        if (coroutineEnded)
         {
-            string sentense = dialogSentences.Dequeue();
-            StartCoroutine(WriteSentence(sentense));
+            if (dialogSentences.Count > 0)
+            {
+                string sentense = dialogSentences.Dequeue();
+                lastSentence = sentense;
+                coroutineEnded = false;
+                StartCoroutine(WriteSentence(sentense));
+            }
+            else
+            {
+                EndDialog();
+            }
         }
         else
         {
-            EndDialog();
+            dialogText.text = lastSentence;
+            coroutineEnded = true;
         }
+       
+       
     }
 }
