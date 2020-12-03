@@ -2,16 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+
 public class PlayerController : MonoBehaviour
 {
     public controlTypes controlType;
     public float moveSpeed;
     public float jumpForce;
     public float landMultiply;
-    
-        
+    public Button attackBtn;
+
     public Joystick movingJoystick;
-    public Joystick attackJoystick;
+    
     public Transform feetPos1;
     public Transform feetPos2;
     public LayerMask ground;
@@ -41,12 +43,13 @@ public class PlayerController : MonoBehaviour
         if(controlType == controlTypes.PC)
         {
             movingJoystick.gameObject.SetActive(false);
-            attackJoystick.gameObject.SetActive(false);
+            attackBtn.gameObject.SetActive(false);
         }
         playerRB = GetComponent<Rigidbody2D>();
         playerAnimator = GetComponent<Animator>();
         PlayerTransform = GetComponent<Transform>();
         locationId = SceneManager.GetActiveScene().buildIndex;
+        attackBtn = null;
     }
 
 
@@ -61,25 +64,21 @@ public class PlayerController : MonoBehaviour
             x = movingJoystick.Horizontal; y = movingJoystick.Vertical;
         }
         Move(x, y);
+        
+
     }
-   
     private void Move(float x, float y)
     {
         if(timer > 0)
         {
             timer -= Time.deltaTime;
         }
-        if(Mathf.Abs(x) > minX && !isRunning)
+        if((Mathf.Abs(x) > minX && !isRunning) || (Mathf.Abs(x) < minX && isRunning))
         {
             isRunning = !isRunning;
             playerAnimator.SetBool("isRunning", isRunning);
         }
-        else if(Mathf.Abs(x) < minX && isRunning)
-        {
-            isRunning = !isRunning;
-            playerAnimator.SetBool("isRunning", isRunning);
-        }
-        if((x > 0 && isRotated) ||(x < 0 && !isRotated))
+        if ((x > 0 && isRotated) ||(x < 0 && !isRotated))
         {
             Rotate();
         }
@@ -100,29 +99,28 @@ public class PlayerController : MonoBehaviour
             if(Physics2D.OverlapCircle(feetPos1.position, .06f, ground))
             {
                 isJumping = false;
-                playerAnimator.SetBool("Jumping", true);
+                playerAnimator.SetBool("Jumping", !isJumping);
             }
         }
-        else if(((Physics2D.OverlapCircle(feetPos1.position, .1f, ground) && y > minY) ||
-            (Physics2D.OverlapCircle(feetPos2.position, .1f, ground) && y > minY)) && timer == 0)
+        else if(timer == 0 && ((Physics2D.OverlapCircle(feetPos1.position, .1f, ground) && y > minY) ||
+            (Physics2D.OverlapCircle(feetPos2.position, .1f, ground) && y > minY)))
         {
             playerRB.velocity = new Vector3(playerRB.velocity.x, jumpForce, 0);
             isJumping = true;
             playerAnimator.SetTrigger("Jump");
-            playerAnimator.SetBool("Jumping", false);
+            playerAnimator.SetBool("Jumping", !isJumping);
             timer = timerTime;
         }
-        else if(!(Physics2D.OverlapCircle(feetPos2.position, .3f, ground) &&
-            (Physics2D.OverlapCircle(feetPos1.position, .3f, ground)))
-             && Mathf.Abs(playerRB.velocity.y) > 5f && !isJumping && !isLanding)
+        else if(!isJumping && !isLanding && Mathf.Abs(playerRB.velocity.y) > 5f && !(Physics2D.OverlapCircle(feetPos2.position, .3f, ground) &&
+            (Physics2D.OverlapCircle(feetPos1.position, .3f, ground))))
         {
             
             isLanding = !isLanding;
             playerAnimator.SetTrigger("Land");
             playerAnimator.SetBool("Landed", !isLanding);
         }
-        else if((Physics2D.OverlapCircle(feetPos2.position, .1f, ground) || 
-            (Physics2D.OverlapCircle(feetPos1.position, .1f, ground))) && isLanding)
+        else if (isLanding && (Physics2D.OverlapCircle(feetPos2.position, .1f, ground) || 
+            (Physics2D.OverlapCircle(feetPos1.position, .1f, ground))))
         {
             isLanding = !isLanding;
             playerAnimator.SetBool("Landed", !isLanding);
