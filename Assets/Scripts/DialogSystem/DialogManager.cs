@@ -48,7 +48,7 @@ public class DialogManager : MonoBehaviour
         {
             written += symbol;
             dialogText.text = written;
-            yield return new WaitForSeconds(.05f);
+            yield return new WaitForSeconds(.03f);
             // звуке
         }
         coroutineEnded = true;
