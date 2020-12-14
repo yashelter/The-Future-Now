@@ -11,8 +11,9 @@ public class LocalizationSystem : MonoBehaviour
     }
     public void UpdateDict()
     {
-        int rowN = 0;
-        TextAsset table = Resources.Load<TextAsset>("fre");
+        int rowN = 2; // eng, why bags???
+        TextAsset table = Resources.Load<TextAsset>("keys"); // name of table
+
         string[] lines = table.text.Split(new char[] { '\n' }, System.StringSplitOptions.RemoveEmptyEntries);
         if (!PlayerPrefs.HasKey("language"))
         {
@@ -21,7 +22,7 @@ public class LocalizationSystem : MonoBehaviour
         string[] line0 = lines[0].Split(new char[] { ';' }, System.StringSplitOptions.RemoveEmptyEntries);
         for(int i = 0; i < line0.Length; i++)
         {
-            if(line0[i] == PlayerPrefs.GetString("language"))
+            if (line0[i].ToString().ToLower() == PlayerPrefs.GetString("language").ToString().ToLower())
             {
                 rowN = i;
                 break;
@@ -36,11 +37,25 @@ public class LocalizationSystem : MonoBehaviour
     }
     public string GetKey(string key)
     {
-        return cSVtable[key];
+        if (cSVtable.ContainsKey(key))
+        {
+            return cSVtable[key];
+        }
+        else
+        {
+            Debug.Log("Key not exists - " + key);
+            return "Error 404";
+        }
     }
     public void SetLanguage(string lang)
     {
         PlayerPrefs.SetString("language", lang);
+        UpdateTexts();
+        
+    }
+    public void UpdateTexts()
+    {
+        UpdateDict();
         TextSetter[] texts = FindObjectsOfType<TextSetter>();
         foreach (var text in texts)
         {
