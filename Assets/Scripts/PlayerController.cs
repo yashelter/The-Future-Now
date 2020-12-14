@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
     public float moveSpeed;
     public float jumpForce;
     public float landMultiply;
+
     public Button attackBtn;
 
     public Joystick movingJoystick;
@@ -63,17 +64,23 @@ public class PlayerController : MonoBehaviour
         {
             x = movingJoystick.Horizontal; y = movingJoystick.Vertical;
         }
+        // timer for jump
+        if (timer > 0)
+        {
+            timer -= Time.deltaTime;
+        }
+        // all player movements
         Move(x, y);
         
 
     }
     private void Move(float x, float y)
     {
-        if(timer > 0)
-        {
-            timer -= Time.deltaTime;
-        }
-        if((Mathf.Abs(x) > minX && !isRunning) || (Mathf.Abs(x) < minX && isRunning))
+        bool grounded = Physics2D.OverlapCircle(feetPos1.position, .08f, ground) ||
+                        Physics2D.OverlapCircle(feetPos2.position, .08f, ground);
+        
+
+        if ((Mathf.Abs(x) > minX && !isRunning) || (Mathf.Abs(x) < minX && isRunning))
         {
             isRunning = !isRunning;
             playerAnimator.SetBool("isRunning", isRunning);
@@ -93,17 +100,17 @@ public class PlayerController : MonoBehaviour
                 playerRB.velocity = new Vector3(x * moveSpeed, playerRB.velocity.y, 0);
             }
         }
+
         if (isJumping && timer <= 0)
         {
             timer = 0;
-            if(Physics2D.OverlapCircle(feetPos1.position, .06f, ground))
+            if(grounded)
             {
                 isJumping = false;
                 playerAnimator.SetBool("Jumping", !isJumping);
             }
         }
-        else if(timer == 0 && ((Physics2D.OverlapCircle(feetPos1.position, .1f, ground) && y > minY) ||
-            (Physics2D.OverlapCircle(feetPos2.position, .1f, ground) && y > minY)))
+        else if(timer == 0 && (grounded && y > minY))
         {
             playerRB.velocity = new Vector3(playerRB.velocity.x, jumpForce, 0);
             isJumping = true;
@@ -111,16 +118,14 @@ public class PlayerController : MonoBehaviour
             playerAnimator.SetBool("Jumping", !isJumping);
             timer = timerTime;
         }
-        else if(!isJumping && !isLanding && Mathf.Abs(playerRB.velocity.y) > 5f && !(Physics2D.OverlapCircle(feetPos2.position, .3f, ground) &&
-            (Physics2D.OverlapCircle(feetPos1.position, .3f, ground))))
+        else if(!isJumping && !isLanding && Mathf.Abs(playerRB.velocity.y) > 5f && !(grounded))
         {
             
             isLanding = !isLanding;
             playerAnimator.SetTrigger("Land");
             playerAnimator.SetBool("Landed", !isLanding);
         }
-        else if (isLanding && (Physics2D.OverlapCircle(feetPos2.position, .1f, ground) || 
-            (Physics2D.OverlapCircle(feetPos1.position, .1f, ground))))
+        else if (isLanding && grounded)
         {
             isLanding = !isLanding;
             playerAnimator.SetBool("Landed", !isLanding);
@@ -135,5 +140,10 @@ public class PlayerController : MonoBehaviour
     private void Save()
     {
         SaveSystem.SavePlayer(this);
+    }
+    public void Attack()
+    {
+        playerAnimator.SetTrigger("Attack");
+        
     }
 }
