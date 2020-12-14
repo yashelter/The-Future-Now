@@ -15,14 +15,16 @@ public class LocalizationSystem : MonoBehaviour
         TextAsset table = Resources.Load<TextAsset>("keys"); // name of table
 
         string[] lines = table.text.Split(new char[] { '\n' }, System.StringSplitOptions.RemoveEmptyEntries);
+        string[] line0 = lines[0].Split(new char[] { ';' }, System.StringSplitOptions.RemoveEmptyEntries);
+
         if (!PlayerPrefs.HasKey("language"))
         {
-            PlayerPrefs.SetString("language", "eng");
+            PlayerPrefs.SetString("language", line0[2]);
         }
-        string[] line0 = lines[0].Split(new char[] { ';' }, System.StringSplitOptions.RemoveEmptyEntries);
+        
         for(int i = 0; i < line0.Length; i++)
         {
-            if (line0[i].ToString().ToLower() == PlayerPrefs.GetString("language").ToString().ToLower())
+            if (line0[i].ToString() == PlayerPrefs.GetString("language"))
             {
                 rowN = i;
                 break;

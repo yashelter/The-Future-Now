@@ -16,6 +16,11 @@ public class DialogManager : MonoBehaviour
     public Animator dialogAnimator;
     private bool coroutineEnded = true;
     private string lastSentence;
+    private LocalizationSystem localizationSystem;
+    private void Start()
+    {
+        localizationSystem = FindObjectOfType<LocalizationSystem>();
+    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         dialogAnimator.SetBool("isActive", true);
@@ -33,9 +38,9 @@ public class DialogManager : MonoBehaviour
     {
         dialogSentences.Clear();
         StopAllCoroutines();
-        foreach (string sentence in dialog.sentenses)
+        foreach (string key in dialog.keys)
         {
-            dialogSentences.Enqueue(sentence);
+            dialogSentences.Enqueue(localizationSystem.GetKey(key));
         }
         dialogAnimator.SetBool("inDialog", true);
         GetDialog();
