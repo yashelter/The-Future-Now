@@ -11,7 +11,7 @@ public class LocalizationSystem : MonoBehaviour
     }
     public void UpdateDict()
     {
-        int rowN = 0; // eng, why bags???
+        int rowN = 2; // eng for defoult
         TextAsset table = Resources.Load<TextAsset>("keys"); // name of table
 
         string[] lines = table.text.Split(new char[] { '\n' }, System.StringSplitOptions.RemoveEmptyEntries);
@@ -19,7 +19,7 @@ public class LocalizationSystem : MonoBehaviour
 
         if (!PlayerPrefs.HasKey("language"))
         {
-            PlayerPrefs.SetString("language", line0[2]);
+            PlayerPrefs.SetString("language", "eng");
         }
         for(int i = 0; i < line0.Length; i++)
         {

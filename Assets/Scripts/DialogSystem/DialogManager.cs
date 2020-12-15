@@ -8,18 +8,24 @@ public class DialogManager : MonoBehaviour
     [Header("Dialog Settings")]
 
     public Dialog dialog;
-    public TextMeshProUGUI btnText;
-    public TextMeshProUGUI dialogText;
-
     public Queue<string> dialogSentences = new Queue<string>();
 
-    public Animator dialogAnimator;
+    private TextMeshProUGUI dialogText;
+    private TextMeshProUGUI btnText;
+    private Animator dialogAnimator;
+
     private bool coroutineEnded = true;
     private string lastSentence;
     private LocalizationSystem localizationSystem;
+    
     private void Start()
     {
         localizationSystem = FindObjectOfType<LocalizationSystem>();
+        dialogText = GameObject.Find("DialogText").GetComponent<TextMeshProUGUI>();
+        btnText = GameObject.Find("StartDialogText").GetComponent<TextMeshProUGUI>();
+        dialogAnimator = GameObject.Find("Dialog").GetComponent<Animator>();
+        btnText.text = localizationSystem.GetKey("startdialog") + '\n' +
+            localizationSystem.GetKey(dialog.nameKey);
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {

@@ -1,5 +1,5 @@
 ﻿public interface Damageable
 {
-    void GetDamage();
+    void GetDamage(int damage);
 
 }

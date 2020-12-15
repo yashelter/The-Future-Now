@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : MonoBehaviour, Damageable
 {
     public controlTypes controlType;
     public float moveSpeed;
@@ -145,5 +145,15 @@ public class PlayerController : MonoBehaviour
     {
         playerAnimator.SetTrigger("Attack");
         
+    }
+
+    public void GetDamage(int damage)
+    {
+        // infinity hp???
+        Death();
+    }
+    public void Death()
+    {
+        // animation + ads
     }
 }

@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class Weapon : MonoBehaviour
 {
+    public int damage;
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.tag == "enemy")
+        if(collision.tag == "Enemy")
         {
-            //
+            collision.GetComponent<Enemy>().GetDamage(damage);
         }
     }
 }
