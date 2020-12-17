@@ -37,7 +37,8 @@ public class LocalizationSystem : MonoBehaviour
         for (int i = 0; i < lines.Length; i++)
         {
             string[] line = lines[i].Split(new char[] { ';' }, System.StringSplitOptions.RemoveEmptyEntries);
-            cSVtable.Add(line[0], line[rowN]);
+            if(line.Length >= 2)
+                cSVtable.Add(line[0], line[rowN]);
         }
     }
     public string GetKey(string key)

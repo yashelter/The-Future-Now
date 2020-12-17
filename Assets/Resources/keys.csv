@@ -12,3 +12,67 @@ startdialog;Начать диалог с ;Start dialog with
 dia1Text1;Привет, это наша первая встреча;Hello its first time when you meet me
 dia1Text2;Но я думаю что она не последняя;But I think that not last
 dia1Text3;Иди вниз к Джо, он расскажет что тебе нужно делать;Go to my friend Joy, in the holl
+day1;3 Июля 2045 ;not Translated((
+dia1.Jane.1;Так, давай быстрей. Мне страшно тут находиться одной. ;not Translated((
+dia1.John.2;Ок.... Спасибо, что спросила, как я добрался, не ранен ли я случаем.;not Translated((
+dia1.Jane.3;Всегда пожалуйста. Я тебя знаю уже много лет. Ты весьма живучая су**. ;not Translated((
+dia1.John.4;Великое у тебя мнение обо мне. ;not Translated((
+dia2.John.1;Прием. ;not Translated((
+dia2.Jane.2;Да, слушаю ;not Translated((
+dia2.John.3;Тут были какие-то люди... ;not Translated((
+dia2.Jane.4;Неудивительно ;not Translated((
+dia2.John.5;Бл***, дай мне договорить. ;not Translated((
+dia2.Jane.6;-Хорошо, только матом не ругайся. Еще кто-нибудь тебя услышит, подумает:” Что за некультурный человек” ;not Translated((
+dia2.John.7;Хм, почему-то у них на шее висит медальон виде буквы “С”. И они написали на стене “BAD WOLF” ;not Translated((
+dia2.Jane.8;Это “Спасители” ;not Translated((
+dia2.John.9;И что они спасают. ;not Translated((
+dia2.Jane.10;Твой интеллект, а ну да, прости, забыла, у тебя его нет... Откуда я знаю. Назвали себя “Спасители” и ходят. Когда в следующий раз увидишь, спроси. ;not Translated((
+dia2.John.11;Нашла мне дело. Они меня убьют, пока я спрашивать их буду. ;not Translated((
+dia2.Jane.12;Возьми медальон;not Translated((
+opcia1.John;Сейф! Надо будет завтра сюда вернуться может найду что-нибудь. ;not Translated((
+dia3.Jane.1;Действительно, до этого моменты такое мы еще не встречали. Медальон и надписи на стенах. ;not Translated((
+dia3.John.2;Все бывает впервые. Теперь может будем встречать чаще их. ;not Translated((
+dia3.Jane.3;Надеюсь не будем. Это как-то очень странно. ;not Translated((
+dia3.John.4;Ой.  Мы уже 6 лет живем в этом мире и вроде все нормально было. ;not Translated((
+dia3.Jane.5;В 23-ем году точно также считали, а что в итоге. Мы боремся за еду и жизнь.;not Translated((
+dia3.John.6;Фу какая ты пессимистичная.  ;not Translated((
+day2;4 Июля 2045;not Translated((
+dia4.John.1;Я поехал.;not Translated((
+dia4.Jane.2;Стой... Удачи. ;not Translated((
+dia5.Jane.1;Зачем ты вернулся туда же? ;not Translated((
+dia5.John.2;Я видел там сейф, попробую открыть, может найду что-нибудь. ;not Translated((
+dia5.Jane.3;Вчера ты что делал? ;not Translated((
+dia5.John.4;Юхи пинал, а что? ;not Translated((
+dia5.John.5;Ничего ;not Translated((
+dia6.John.1;Ну, угадать я не смогу скорее всего. Может тут есть какая-нибудь подсказка. Надо посмотреть в столе. ;not Translated((
+list1;Год создания США;not Translated((
+dia7.John.1;Интересно, может мне это помочь? ;not Translated((
+dia8.John.1;Я гений. ;not Translated((
+dia8.Jane.2;Кто бы сомневался. ;not Translated((
+dia8.John.3;Я же отключил связь. ;not Translated((
+dia8.Jane.4;Видимо нет. ;not Translated((
+dia8.John.5;Почему ты мне не помогла с вопросом тогда. ;not Translated((
+dia8.Jane.6;Ты меня не спрашивал. ;not Translated((
+dia8.John.7;Прекрасно. ;not Translated((
+dia9.John.1;Я нашел добавки. Можно будет торт сделать. ;not Translated((
+dia9.Jane.2;Что праздновать будем? ;not Translated((
+dia9.enemy.3;*ор и смех* ;not Translated((
+dia9.John.4;Похоже мою смерть. ;not Translated((
+dia10.John.1;Опять они. ;not Translated((
+dia10.Jane.2;Приехали проверить, что стало с их друзьями. ;not Translated((
+dia10.John.3;Интересно, сколько в следующий раз приедет. ;not Translated((
+dia10.Jane.4;Ты хочешь проверить? ;not Translated((
+dia10.John.5;С великим удовольствием больше сюда никогда не вернусь. ;not Translated((
+dia11.John.1;ГГ--Там были не только для торта, а еще очень много витаминов. Теперь мы можем долго никуда не выходить. ;not Translated((
+dia11.Jane.2;П-- Ты хотел сказать, что тебе не придётся. ;not Translated((
+dia11.John.3;ГГ--Почему ты так не любишь выходить наружу? Там так прекрасно. ;not Translated((
+dia11.Jane.4;П--Поверю на слово. ;not Translated((
+day3;8 Июля 2045 ;not Translated((
+dia12.Jane.1;Все же, рекуператор еды очень интересная вещь. ;not Translated((
+dia12.John.2;То есть? ;not Translated((
+dia12.Jane.3;Ты из нечего делаешь нормальную еду. Тебе надо туда подключить витамины или ещё что-то и у тебя есть еда. ;not Translated((
+dia12.John.4;Технологии сделали большой шаг за последние 100 лет. Помнишь сколько стоили витамины, белки и т.д.? ;not Translated((
+dia12.Jane.5;Сущие копейки. Наверное, это было одно из главных изобретений человека ;not Translated((
+day4;11 Июля 2045 ;not Translated((
+dia13.John.1;Припасы начинают заканчиваться. Я поеду за припасами. ;not Translated((
+dia13.Jane.2;Ок, будь осторожен. ;not Translated((

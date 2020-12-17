@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class DialogManager : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class DialogManager : MonoBehaviour
 
     private TextMeshProUGUI dialogText;
     private TextMeshProUGUI btnText;
+    private Button pauseBTN; 
     private Animator dialogAnimator;
 
     private bool coroutineEnded = true;
@@ -26,6 +28,7 @@ public class DialogManager : MonoBehaviour
         dialogAnimator = GameObject.Find("Dialog").GetComponent<Animator>();
         btnText.text = localizationSystem.GetKey("startdialog") + '\n' +
             localizationSystem.GetKey(dialog.nameKey);
+        pauseBTN = GameObject.Find("PausedButton").GetComponent<Button>();
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -39,9 +42,11 @@ public class DialogManager : MonoBehaviour
     {
         dialogAnimator.SetBool("isActive", false);
         dialogAnimator.SetBool("inDialog", false);
+        pauseBTN.interactable = true;
     }
     public void StartDialog()
     {
+        pauseBTN.interactable = false;
         dialogSentences.Clear();
         StopAllCoroutines();
         foreach (string key in dialog.keys)
@@ -59,7 +64,7 @@ public class DialogManager : MonoBehaviour
         {
             written += symbol;
             dialogText.text = written;
-            yield return new WaitForSeconds(.03f);
+            yield return new WaitForSeconds(.05f);
             // звуке
         }
         coroutineEnded = true;
