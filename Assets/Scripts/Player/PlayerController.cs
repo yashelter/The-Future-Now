@@ -46,6 +46,7 @@ public class PlayerController : MonoBehaviour, Damageable
 
     private void Start()
     {
+        Time.timeScale = 1;
         if(controlType == controlTypes.PC)
         {
             movingJoystick.gameObject.SetActive(false);
@@ -57,34 +58,36 @@ public class PlayerController : MonoBehaviour, Damageable
         sword = GameObject.Find("Sword").GetComponent<Weapon>();
         locationId = SceneManager.GetActiveScene().buildIndex;
         ads = FindObjectOfType<AdsManager>();
-        attackBtn = null;
     }
 
 
     private void FixedUpdate()
     {
-        float x = 0, y = 0;
-        if(controlType == controlTypes.PC)
+        if (playerAnimator.GetBool("Alive"))
         {
-            x = Input.GetAxis("Horizontal"); y = Input.GetAxis("Vertical") > 0 ? 1 : 0; ;
-        }else if(controlType == controlTypes.Phone)
-        {
-            x = movingJoystick.Horizontal; y = movingJoystick.Vertical;
-        }
-        // timer for jump
-        if (timer > 0)
-        {
-            timer -= Time.deltaTime;
-        }
-        // all player movements
-        Move(x, y);
-        
+            float x = 0, y = 0;
+            if (controlType == controlTypes.PC)
+            {
+                x = Input.GetAxis("Horizontal"); y = Input.GetAxis("Vertical") > 0 ? 1 : 0; ;
+            }
+            else if (controlType == controlTypes.Phone)
+            {
+                x = movingJoystick.Horizontal; y = movingJoystick.Vertical;
+            }
+            // timer for jump
+            if (timer > 0)
+            {
+                timer -= Time.deltaTime;
+            }
+            // all player movements
 
+            Move(x, y);
+        }
     }
     private void Move(float x, float y)
     {
-        bool grounded = Physics2D.OverlapCircle(feetPos1.position, .08f, ground) ||
-                        Physics2D.OverlapCircle(feetPos2.position, .08f, ground);
+        bool grounded = Physics2D.OverlapCircle(feetPos1.position, .4f, ground) ||
+                        Physics2D.OverlapCircle(feetPos2.position, .9f, ground);
         
 
         if ((Mathf.Abs(x) > minX && !isRunning) || (Mathf.Abs(x) < minX && isRunning))
@@ -150,8 +153,11 @@ public class PlayerController : MonoBehaviour, Damageable
     }
     public void Attack()
     {
-        sword.inCombat = true;
-        playerAnimator.SetTrigger("Attack");
+        if (!sword.inCombat)
+        {
+            sword.inCombat = true;
+            playerAnimator.SetTrigger("Attack");
+        }
     }
     public void EndAttack()
     {
@@ -165,16 +171,21 @@ public class PlayerController : MonoBehaviour, Damageable
     public void OnDeath()
     {
         //если чел хочет, смотрит рекламу
-        Death();
+        playerAnimator.SetTrigger("Death");
+        playerAnimator.SetBool("Alive", false);
+        attackBtn.gameObject.SetActive(false);
+        movingJoystick.gameObject.SetActive(false);
     }
     public void Death()
     {
         //Умирает, рестарт левела
-        ads.Show();
+        ads.Show("rewardedVideo");
         SceneManager.LoadScene(locationId);
     }
     public void ReturnAlive()
     {
         // анимация оживления, временное бессмертие
+        attackBtn.gameObject.SetActive(true);
+        movingJoystick.gameObject.SetActive(true);
     }
 }

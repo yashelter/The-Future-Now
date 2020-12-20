@@ -11,7 +11,7 @@ public class MenuSystem : MonoBehaviour
         {
             PlayerPrefs.SetInt("level", 1);
         }
-        SceneManager.LoadScene(PlayerPrefs.GetInt("level", 1));
+        SceneManager.LoadScene(PlayerPrefs.GetInt("level"));
         // made Acync
     }
     public void Exit()

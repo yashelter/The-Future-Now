@@ -10,6 +10,7 @@ public class AdsManager : MonoBehaviour, IUnityAdsListener
     private PlayerController player;
     void Start()
     {
+        player = FindObjectOfType<PlayerController>();
         if (Advertisement.isSupported)
         {
             Advertisement.Initialize(gameId, testMode);
@@ -17,7 +18,7 @@ public class AdsManager : MonoBehaviour, IUnityAdsListener
         }
     }
 
-    public void Show(string type = "video")
+    public void Show(string type = "rewardedVideo")
     {
         if (Advertisement.IsReady() && type == "rewardedVideo")
         {
@@ -41,6 +42,7 @@ public class AdsManager : MonoBehaviour, IUnityAdsListener
 
     void IUnityAdsListener.OnUnityAdsDidStart(string placementId)
     {
+        Time.timeScale = 0;
         // дополнительные действия, которые необходимо предпринять, когда конечные пользователи запускают объявление.
     }
 
