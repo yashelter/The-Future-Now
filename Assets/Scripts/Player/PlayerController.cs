@@ -19,7 +19,6 @@ public class PlayerController : MonoBehaviour, Damageable
     public Transform feetPos1;
     public Transform feetPos2;
     public LayerMask ground;
-
     [HideInInspector]
     public enum controlTypes{
         PC, Phone
@@ -43,7 +42,7 @@ public class PlayerController : MonoBehaviour, Damageable
     public Transform PlayerTransform;
     private Rigidbody2D playerRB;
     
-
+    
     private void Start()
     {
         Time.timeScale = 1;
@@ -86,10 +85,9 @@ public class PlayerController : MonoBehaviour, Damageable
     }
     private void Move(float x, float y)
     {
-        bool grounded = Physics2D.OverlapCircle(feetPos1.position, .4f, ground) ||
-                        Physics2D.OverlapCircle(feetPos2.position, .9f, ground);
+        bool grounded = Physics2D.OverlapCircle(feetPos1.position, 1.7f, ground) ||
+                        Physics2D.OverlapCircle(feetPos2.position, 1.7f, ground);
         
-
         if ((Mathf.Abs(x) > minX && !isRunning) || (Mathf.Abs(x) < minX && isRunning))
         {
             isRunning = !isRunning;

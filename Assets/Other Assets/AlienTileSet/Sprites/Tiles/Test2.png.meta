@@ -104,8 +104,8 @@ TextureImporter:
     sprites: []
     outline: []
     physicsShape:
-    - - {x: -142, y: 256}
-      - {x: -256, y: 161}
+    - - {x: -161, y: 256}
+      - {x: -256, y: 174}
       - {x: -256, y: -256}
       - {x: 256, y: -256}
       - {x: 256, y: 256}

@@ -16,10 +16,21 @@ public class LocalizationSystem : MonoBehaviour
 
         string[] lines = table.text.Split(new char[] { '\n' }, System.StringSplitOptions.RemoveEmptyEntries);
         string[] line0 = lines[0].Split(new char[] { ';' }, System.StringSplitOptions.RemoveEmptyEntries);
-
+        //если не сохраняли то ставим системный язык при наличии
         if (!PlayerPrefs.HasKey("language"))
         {
-            PlayerPrefs.SetString("language", "eng");
+            switch (Application.systemLanguage)
+            {
+                case SystemLanguage.English:
+                    PlayerPrefs.SetString("language", "eng");
+                    break;
+                case SystemLanguage.Russian:
+                    PlayerPrefs.SetString("language", "ru");
+                    break;
+                default:
+                    PlayerPrefs.SetString("language", "eng");
+                    break;
+            }
         }
         for(int i = 0; i < line0.Length; i++)
         {
@@ -41,8 +52,11 @@ public class LocalizationSystem : MonoBehaviour
                 cSVtable.Add(line[0], line[rowN]);
         }
     }
+    // использовать везде где надо получить текст
+
     public string GetKey(string key)
     {
+        UpdateDict();
         if (cSVtable.ContainsKey(key))
         {
             return cSVtable[key];
@@ -50,15 +64,17 @@ public class LocalizationSystem : MonoBehaviour
         else
         {
             Debug.Log("Key not exists - " + key);
-            return "Error 404";
+            return $"Excepton with key - {key}, send it Developers please";
         }
     }
     public void SetLanguage(string lang)
     {
+
         PlayerPrefs.SetString("language", lang);
         UpdateTexts();
         
     }
+    // обновляем тесты(нужно только для меню)
     public void UpdateTexts()
     {
         UpdateDict();
