@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Controller : MonoBehaviour
 {
-    public float eyeRange = 10f;
+    public float eyeRange = 5f;
     private Transform playerTransform;
     private Transform position;
 
@@ -20,9 +20,10 @@ public class Controller : MonoBehaviour
 
     void FixedUpdate()
     {
-        if(Mathf.Abs(playerTransform.position.x) < eyeRange + position.position.x)
+        if(playerTransform.position.x < position.position.x  &&
+            position.position.x < playerTransform.position.x + eyeRange)
         {
-            shape.AddForce(new Vector2(-50, 0));
+            Debug.Log("I coming");
         }
     }
 
