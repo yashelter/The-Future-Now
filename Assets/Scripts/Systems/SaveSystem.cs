@@ -8,8 +8,8 @@ public static class SaveSystem
 {
     public static void SavePlayer(PlayerController pc)
     {
-        float x = pc.PlayerTransform.position.x,
-              y = pc.PlayerTransform.position.y;
+        float x = pc.playerTransform.position.x,
+              y = pc.playerTransform.position.y;
         int[] inv = null;
         int locationId = pc.locationId;
         BinaryFormatter formatter = new BinaryFormatter();

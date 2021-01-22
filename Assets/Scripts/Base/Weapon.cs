@@ -8,9 +8,9 @@ public class Weapon : MonoBehaviour
     [HideInInspector]public bool inCombat = false;
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.tag == "Enemy" && inCombat)
+        if(inCombat && collision.CompareTag("Enemy"))
         {
-            collision.GetComponent<Enemy>().GetDamage(damage);
+            collision.GetComponent<AIController>().GetDamage(damage);
         }
     }   
 

@@ -11,10 +11,6 @@ public class Entity : MonoBehaviour, Damageable
     public float jumpForce;
     public float landMultiply;
 
-    public Button attackBtn;
-
-    public Joystick movingJoystick;
-
     public Transform feetPos1;
     public Transform feetPos2;
     public LayerMask ground;
@@ -32,30 +28,31 @@ public class Entity : MonoBehaviour, Damageable
 
     protected Animator playerAnimator;
     [HideInInspector]
-    public Transform PlayerTransform;
+    public Transform playerTransform;
     protected Rigidbody2D playerRB;
 
 
-    private void Start()
+    protected virtual void Start()
     {
-        Time.timeScale = 1;
-       
         playerRB = GetComponent<Rigidbody2D>();
         playerAnimator = GetComponent<Animator>();
-        PlayerTransform = GetComponent<Transform>();
+        playerTransform = GetComponent<Transform>();
     }
 
 
-    private void FixedUpdate()
+    protected virtual void FixedUpdate()
     {
+        // заглушка надо переопределять
         float x = 0, y = 0;
         if (playerAnimator.GetBool("Alive"))
         {
             Move(x, y);
         }
+
     }
-    private void Move(float x, float y)
+    protected virtual void Move(float x, float y)
     {
+        // все возможные движения исходя от x и y, работа с анимациями
         bool grounded = Physics2D.OverlapCircle(feetPos1.position, 1.7f, ground) ||
                         Physics2D.OverlapCircle(feetPos2.position, 1.7f, ground);
 
@@ -111,12 +108,12 @@ public class Entity : MonoBehaviour, Damageable
         }
 
     }
-    private void Rotate()
+    protected void Rotate()
     {
         isRotated = !isRotated;
-        PlayerTransform.Rotate(new Vector3(0, 180, 0));
+        playerTransform.Rotate(new Vector3(0, 180, 0));
     }
-    public void Attack()
+    public virtual void Attack()
     {
         if (!sword.inCombat)
         {
@@ -124,15 +121,16 @@ public class Entity : MonoBehaviour, Damageable
             playerAnimator.SetTrigger("Attack");
         }
     }
-    public void EndAttack()
+    public virtual void EndAttack()
     {
         sword.inCombat = false;
     }
-    public void GetDamage(int damage)
+    public virtual void GetDamage(int damage)
     {
         // infinity hp???
+        Death();
     }
-    public void Death()
+    public virtual void Death()
     {
         Destroy(gameObject);
     }
