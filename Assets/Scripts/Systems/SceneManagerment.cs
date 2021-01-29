@@ -18,13 +18,4 @@ public class SceneManagerment : MonoBehaviour
     {
 
     }
-    void Start()
-    {
-        
-    }
-
-    void Update()
-    {
-        
-    }
 }

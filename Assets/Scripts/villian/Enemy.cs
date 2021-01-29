@@ -13,6 +13,4 @@ public class Enemy : MonoBehaviour, Damageable
             Destroy(gameObject);
         }
     }
-
-
 }

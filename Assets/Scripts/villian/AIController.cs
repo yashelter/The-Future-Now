@@ -34,19 +34,8 @@ public class AIController : Entity
     }
     protected void defenderBrain()
     {
-        // меняем тут
-        int mod = 0;
-        if (targetTransform.position.x < playerTransform.position.x &&
-            playerTransform.position.x < targetTransform.position.x + warriorEyeRange)
-        {
-            mod = -1;
-        }
-        else if (targetTransform.position.x > playerTransform.position.x &&
-            playerTransform.position.x + warriorEyeRange > targetTransform.position.x)
-        {
-            mod = 1;
-        }
-        Move(moveSpeed * mod, 0);
+        // заглушка
+        warriorBrain();
     }
     protected void warriorBrain()
     {
