@@ -5,6 +5,6 @@ using UnityEngine;
 [System.Serializable]
 public class Dialog
 {
-    public string nameKey;
+    public string keyName;
     public string[] keys;
 }

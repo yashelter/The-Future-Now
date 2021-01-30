@@ -24,7 +24,9 @@ public class PlayerController : Entity
     {
         base.Start();
         Time.timeScale = 1;
-        if(controlType == controlTypes.PC)
+        movingJoystick = FindObjectOfType<Joystick>();
+        attackBtn = GameObject.FindGameObjectWithTag("AttackBtn").GetComponent<Button>();
+        if (controlType == controlTypes.PC)
         {
             movingJoystick.gameObject.SetActive(false);
             attackBtn.gameObject.SetActive(false);
@@ -76,6 +78,7 @@ public class PlayerController : Entity
         playerAnimator.SetBool("Alive", false);
         attackBtn.gameObject.SetActive(false);
         movingJoystick.gameObject.SetActive(false);
+        
     }
     public override void Death()
     {
@@ -88,5 +91,9 @@ public class PlayerController : Entity
         // анимация оживления, временное бессмертие
         attackBtn.gameObject.SetActive(true);
         movingJoystick.gameObject.SetActive(true);
+    }
+    public bool GetLife()
+    {
+        return playerAnimator.GetBool("Alive");
     }
 }

@@ -12,6 +12,10 @@ public class Weapon : MonoBehaviour
         {
             collision.GetComponent<AIController>().GetDamage(damage);
         }
+        else if(inCombat && collision.CompareTag("Player"))
+        {
+            collision.GetComponent<PlayerController>().GetDamage(damage);
+        }
     }   
 
 }

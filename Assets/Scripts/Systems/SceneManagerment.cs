@@ -9,13 +9,10 @@ public class SceneManagerment : MonoBehaviour
         if(collision.tag == "Player")
         {
             PlayerPrefs.SetInt("level", (PlayerPrefs.GetInt("level")) + 1);
-            
+            gameObject.AddComponent<MenuSystem>().LoadGame();
         }
-        new MenuSystem().LoadGame();
+        
         
     }
-    public void nextLevel()
-    {
-
-    }
+   
 }

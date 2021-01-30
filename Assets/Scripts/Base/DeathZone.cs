@@ -7,7 +7,8 @@ public class DeathZone : MonoBehaviour
     public int damage = 0;
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.tag == "Player")
+        // пока умирают все, но вохможно это не нужно
+        if(collision.gameObject.CompareTag("Player"))
         {
             collision.GetComponent<PlayerController>().GetDamage(damage);
         }

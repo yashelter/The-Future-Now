@@ -1,7 +1,10 @@
 fileFormatVersion: 2
-guid: 0891d2414949b984284d06c90fccd6d9
+guid: 80211eb7d5f8bd144ae7e7ffe652de53
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: 3708752277653030588
+    second: evilSword_0
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -103,13 +106,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: sword_0
+      name: evilSword_0
       rect:
         serializedVersion: 2
-        x: 216
-        y: 707
-        width: 1616
-        height: 201
+        x: 237
+        y: 14
+        width: 58
+        height: 465
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -117,8 +120,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e347705d95bb7ebc0800000000000000
-      internalID: -3753825769889500098
+      spriteID: cb60e65fb82287330800000000000000
+      internalID: 3708752277653030588
       vertices: []
       indices: 
       edges: []

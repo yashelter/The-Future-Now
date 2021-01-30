@@ -26,12 +26,14 @@ public class DialogManager : MonoBehaviour
         dialogText = GameObject.Find("DialogText").GetComponent<TextMeshProUGUI>();
         btnText = GameObject.Find("StartDialogText").GetComponent<TextMeshProUGUI>();
         dialogAnimator = GameObject.Find("Dialog").GetComponent<Animator>();
-        btnText.text = localizationSystem.GetKey("startdialog") + '\n' +
-            localizationSystem.GetKey(dialog.nameKey);
         pauseBTN = GameObject.Find("PausedButton").GetComponent<Button>();
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        // плдготавливаем новый диалог
+        FindObjectOfType<DialogTrigger>().SetReference(this);
+        btnText.text = localizationSystem.GetKey("startdialog") + '\n' +
+            localizationSystem.GetKey(dialog.keyName);
         dialogAnimator.SetBool("isActive", true);
     }
     private void OnTriggerExit2D(Collider2D collision)

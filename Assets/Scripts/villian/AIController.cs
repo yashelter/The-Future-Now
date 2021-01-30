@@ -23,13 +23,22 @@ public class AIController : Entity
     }
     protected override void FixedUpdate()
     {
-        if (AIType == AITypes.Warrior)
+        if (targetTransform.gameObject.GetComponent<PlayerController>().GetLife())
         {
-            warriorBrain();
+            if (AIType == AITypes.Warrior)
+            {
+                warriorBrain();
+            }
+            else
+            {
+                defenderBrain();
+            }
         }
         else
         {
-            defenderBrain();
+            // если герой умер, предпринимать действия тк 
+            // 1 - он может реснуться после рекламы
+            // 2 - игрок увидет действия
         }
     }
     protected void defenderBrain()

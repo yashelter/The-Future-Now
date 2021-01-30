@@ -4,9 +4,21 @@ using UnityEngine;
 
 public class DialogTrigger : MonoBehaviour
 {
-    public DialogManager dialog;
+    private DialogManager dialog;
+    private void Start()
+    {
+        dialog = FindObjectOfType<DialogManager>();
+    }
+    public void SetReference(DialogManager dm)
+    {
+        dialog = dm;
+    }
     public void Trigger()
     {
         dialog.StartDialog();
+    }
+    public void GetDialog()
+    {
+        dialog.GetDialog();
     }
 }
