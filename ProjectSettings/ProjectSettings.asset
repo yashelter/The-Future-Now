@@ -12,7 +12,7 @@ PlayerSettings:
   targetDevice: 2
   useOnDemandResources: 0
   accelerometerFrequency: 60
-  companyName: Shinig Void
+  companyName: Absolute Zero
   productName: The Future Now
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
@@ -127,7 +127,7 @@ PlayerSettings:
     16:10: 1
     16:9: 1
     Others: 1
-  bundleVersion: 0.0
+  bundleVersion: 0.1
   preloadedAssets: []
   metroInputSource: 0
   wsaTransparentSwapchain: 0
@@ -651,6 +651,7 @@ PlayerSettings:
   additionalIl2CppArgs: 
   scriptingRuntimeVersion: 1
   gcIncremental: 1
+  assemblyVersionValidation: 1
   gcWBarrierValidation: 0
   apiCompatibilityLevelPerPlatform: {}
   m_RenderingPath: 1
@@ -699,6 +700,7 @@ PlayerSettings:
   XboxOneCapability: []
   XboxOneGameRating: {}
   XboxOneIsContentPackage: 0
+  XboxOneEnhancedXboxCompatibilityMode: 0
   XboxOneEnableGPUVariability: 1
   XboxOneSockets: {}
   XboxOneSplashScreen: {fileID: 0}
@@ -714,6 +716,7 @@ PlayerSettings:
     Collab: 0
     Game Performance: 0
     Purchasing: 0
+    UDP: 0
     Unity Ads: 1
   luminIcon:
     m_Name: 
@@ -728,10 +731,10 @@ PlayerSettings:
     m_VersionName: 
   apiCompatibilityLevel: 6
   activeInputHandler: 0
-  cloudProjectId: 67c57a07-111b-4b90-b9be-211f9e22efda
+  cloudProjectId: b4906707-60e6-42ad-9920-10b950c59a74
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
-  projectName: The Future Now
+  projectName: The Future Now (1)
   organizationId: shinig-void
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0

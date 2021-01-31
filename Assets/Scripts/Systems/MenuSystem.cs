@@ -28,4 +28,5 @@ public class MenuSystem : MonoBehaviour
         }
         // сбросить настройки
     }
+   
 }

@@ -18,7 +18,7 @@ public class PlayerController : Entity
 
     [HideInInspector]
     public int locationId;
-    [HideInInspector]
+    public Canvas canvas;
     
     protected override void Start()
     {
@@ -82,13 +82,15 @@ public class PlayerController : Entity
     }
     public override void Death()
     {
-        //Умирает, рестарт левела
-        ads.Show("rewardedVideo");
+        //Умирает, рестарт левла
         SceneManager.LoadScene(locationId);
     }
     public void ReturnAlive()
     {
         // анимация оживления, временное бессмертие
+        ads.Show("rewardedVideo");
+        Debug.Log("Show rewarded video");
+        playerAnimator.SetTrigger("Reborn");
         attackBtn.gameObject.SetActive(true);
         movingJoystick.gameObject.SetActive(true);
     }

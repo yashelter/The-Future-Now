@@ -12,7 +12,7 @@ public class Weapon : MonoBehaviour
         {
             collision.GetComponent<AIController>().GetDamage(damage);
         }
-        else if(inCombat && collision.CompareTag("Player"))
+        else if(inCombat && collision.CompareTag("Player") && collision.gameObject.GetComponent<PlayerController>().GetLife())
         {
             collision.GetComponent<PlayerController>().GetDamage(damage);
         }
