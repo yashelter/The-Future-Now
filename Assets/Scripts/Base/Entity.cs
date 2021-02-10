@@ -16,10 +16,13 @@ public class Entity : MonoBehaviour, Damageable
     public LayerMask ground;
     [HideInInspector]
 
+    public bool isHitable = true;
+
     protected bool isRunning = false;
     protected bool isRotated = false;
     protected bool isJumping = false;
     protected bool isLanding = false;
+    
 
     protected float timer = 0f;
     protected float timerTime = 0.5f;
@@ -52,10 +55,10 @@ public class Entity : MonoBehaviour, Damageable
     }
     protected virtual void Move(float x, float y)
     {
+        
         // все возможные движения исходя от x и y, работа с анимациями
-        bool grounded = Physics2D.OverlapCircle(feetPos1.position, 1.7f, ground) ||
-                        Physics2D.OverlapCircle(feetPos2.position, 1.7f, ground);
-
+        bool grounded = Physics2D.OverlapCircle(feetPos1.position, 1f, ground) ||
+                        Physics2D.OverlapCircle(feetPos2.position, 1f, ground);
         if ((Mathf.Abs(x) > minX && !isRunning) || (Mathf.Abs(x) < minX && isRunning))
         {
             isRunning = !isRunning;

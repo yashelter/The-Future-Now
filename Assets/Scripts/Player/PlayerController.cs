@@ -6,8 +6,8 @@ using UnityEngine.UI;
 
 public class PlayerController : Entity
 {
-    public Button attackBtn;
-    public Joystick movingJoystick;
+    private Button attackBtn;
+    private Joystick movingJoystick;
 
     public controlTypes controlType;
     [HideInInspector]
@@ -15,11 +15,12 @@ public class PlayerController : Entity
         PC, Phone
     }
     private AdsManager ads;
-
+    private bool isReborning = false;
     [HideInInspector]
     public int locationId;
     public Canvas canvas;
     
+        
     protected override void Start()
     {
         base.Start();
@@ -44,19 +45,25 @@ public class PlayerController : Entity
             float x = 0, y = 0;
             if (controlType == controlTypes.PC)
             {
-                x = Input.GetAxis("Horizontal"); y = Input.GetAxis("Vertical") > 0 ? 1 : 0; ;
+                x = Input.GetAxis("Horizontal"); 
+                y = Input.GetAxis("Vertical") > 0 ? 1 : 0; ;
             }
             else if (controlType == controlTypes.Phone)
             {
-                x = movingJoystick.Horizontal; y = movingJoystick.Vertical;
+                x = movingJoystick.Horizontal; 
+                y = movingJoystick.Vertical;
             }
             // timer for jump
             if (timer > 0)
             {
                 timer -= Time.deltaTime;
             }
+            if (isReborning)
+            {
+                x = 0; y = 0;
+            }
             // all player movements
-
+            
             Move(x, y);
         }
     }
@@ -75,9 +82,8 @@ public class PlayerController : Entity
     {
         //если чел хочет, смотрит рекламу
         playerAnimator.SetTrigger("Death");
+        playerAnimator.SetBool("Reborn", false);
         playerAnimator.SetBool("Alive", false);
-        attackBtn.gameObject.SetActive(false);
-        movingJoystick.gameObject.SetActive(false);
         
     }
     public override void Death()
@@ -87,15 +93,35 @@ public class PlayerController : Entity
     }
     public void ReturnAlive()
     {
-        // анимация оживления, временное бессмертие
+        // -5 часов жизни, тут чисто показ рекламы и закулисные действия
         ads.Show("rewardedVideo");
         Debug.Log("Show rewarded video");
-        playerAnimator.SetTrigger("Reborn");
+        
+    }
+    public void EndedReturn()
+    {
         attackBtn.gameObject.SetActive(true);
         movingJoystick.gameObject.SetActive(true);
+        isReborning = false;
+        
+    }
+    public void BeAlive()
+    {
+        // анимация оживления, временное бессмертие
+        playerAnimator.SetBool("Reborn", true);
+        playerAnimator.SetBool("Alive", true);
+        isReborning = true;
+        StartCoroutine("NonDestroable"); // Даёт бессмертие на время
     }
     public bool GetLife()
     {
         return playerAnimator.GetBool("Alive");
+    }
+    // даёт временное бессмертие
+    private IEnumerator NonDestroable()
+    {
+        isHitable = false;
+        yield return new WaitForSeconds(6);
+        isHitable = true;
     }
 }

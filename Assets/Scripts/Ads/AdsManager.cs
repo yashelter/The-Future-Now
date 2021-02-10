@@ -5,8 +5,8 @@ using UnityEngine.Advertisements;
 
 public class AdsManager : MonoBehaviour, IUnityAdsListener
 {
-    private string gameId = "3994835";
-    private bool testMode = false;
+    private string gameId { get; } = "3994835";
+    private bool testMode { get; } = true;
     private PlayerController player;
     void Start()
     {
@@ -20,12 +20,20 @@ public class AdsManager : MonoBehaviour, IUnityAdsListener
 
     public void Show(string type = "rewardedVideo")
     {
-        if (Advertisement.IsReady() && type == "rewardedVideo")
+        if (Advertisement.GetPlacementState() == PlacementState.Ready)
         {
-            Advertisement.Show("rewardedVideo");
-        }else if((Advertisement.IsReady() && type == "video"))
+            if (Advertisement.IsReady() && type == "rewardedVideo")
+            {
+                Advertisement.Show("rewardedVideo");
+            }
+            else if ((Advertisement.IsReady() && type == "video"))
+            {
+                Advertisement.Show("video");
+            }
+        }
+        else
         {
-            Advertisement.Show("video");
+            // hmmmmm
         }
 
     }
@@ -37,11 +45,14 @@ public class AdsManager : MonoBehaviour, IUnityAdsListener
 
     void IUnityAdsListener.OnUnityAdsDidError(string message)
     {
-        // ошибка
+        Debug.LogWarning("Error with ads, fix pls");
+        Time.timeScale = 1;
+        player.BeAlive();
     }
 
     void IUnityAdsListener.OnUnityAdsDidStart(string placementId)
     {
+        
         Time.timeScale = 0;
         // дополнительные действия, которые необходимо предпринять, когда конечные пользователи запускают объявление.
     }
@@ -50,11 +61,13 @@ public class AdsManager : MonoBehaviour, IUnityAdsListener
     {
         if (placementId == "rewardedVideo" && showResult == ShowResult.Finished)
         {
-            player.ReturnAlive();
+            Time.timeScale = 1;
+            player.BeAlive();
             // награда для пользователя за то, что посмотрел ролик.
         }
         else if (showResult == ShowResult.Skipped || showResult == ShowResult.Failed)
         {
+            Time.timeScale = 1;
             Debug.LogWarning("Реклама была пропущена или возникла ошибка");
             // не вознаграждайте пользователя за пропуск объявления.
         }

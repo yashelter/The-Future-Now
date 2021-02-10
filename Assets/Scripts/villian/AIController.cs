@@ -27,11 +27,11 @@ public class AIController : Entity
         {
             if (AIType == AITypes.Warrior)
             {
-                warriorBrain();
+                WarriorBrain();
             }
             else
             {
-                defenderBrain();
+                DefenderBrain();
             }
         }
         else
@@ -41,12 +41,12 @@ public class AIController : Entity
             // 2 - игрок увидет действия
         }
     }
-    protected void defenderBrain()
+    protected void DefenderBrain()
     {
         // заглушка
-        warriorBrain();
+        WarriorBrain();
     }
-    protected void warriorBrain()
+    protected void WarriorBrain()
     {
         // меняем тут
         int mod = 0;

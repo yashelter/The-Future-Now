@@ -6,7 +6,7 @@ public class SceneManagerment : MonoBehaviour
 {
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.tag == "Player")
+        if(collision.gameObject.CompareTag("Player"))
         {
             PlayerPrefs.SetInt("level", (PlayerPrefs.GetInt("level")) + 1);
             gameObject.AddComponent<MenuSystem>().LoadGame();
