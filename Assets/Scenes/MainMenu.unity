@@ -660,7 +660,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25d7a970834dca049a6fdc0e9bb121c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  key: lang
+  key: ru
 --- !u!114 &622921037
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -924,7 +924,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &836868648
 RectTransform:
   m_ObjectHideFlags: 0
@@ -942,7 +942,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 192}
+  m_AnchoredPosition: {x: -128.05, y: 208.1}
   m_SizeDelta: {x: 287.15076, y: 74.23369}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &836868649
@@ -1000,30 +1000,6 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: eng
           m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 836868647}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1153153944}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
         m_CallState: 2
 --- !u!114 &836868650
 MonoBehaviour:
@@ -1379,7 +1355,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 30
+  m_fontSize: 42.15
   m_fontSizeBase: 30
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1441,7 +1417,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25d7a970834dca049a6fdc0e9bb121c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  key: lang
+  key: eng
 --- !u!1 &1095347513
 GameObject:
   m_ObjectHideFlags: 0
@@ -1692,7 +1668,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: -0.000015258789, y: 192}
+  m_AnchoredPosition: {x: 159.1, y: 208.1}
   m_SizeDelta: {x: 287.15076, y: 74.23369}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &1153153946
@@ -1750,30 +1726,6 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: ru
           m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1153153944}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 836868647}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
         m_CallState: 2
 --- !u!114 &1153153947
 MonoBehaviour:
@@ -2227,7 +2179,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 299.1}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 287.15076, y: 74.23369}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &1614434264

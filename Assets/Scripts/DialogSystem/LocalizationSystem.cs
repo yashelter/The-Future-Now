@@ -16,9 +16,11 @@ public class LocalizationSystem : MonoBehaviour
 
         string[] lines = table.text.Split(new char[] { '\n' }, System.StringSplitOptions.RemoveEmptyEntries);
         string[] line0 = lines[0].Split(new char[] { ';' }, System.StringSplitOptions.RemoveEmptyEntries);
-        //если не сохраняли то ставим системный язык при наличии
+        //если не сохраняли то ставим системный язык при наличии,а также это первая загрузка
+        // поэтому ставим также нужные ключи
         if (!PlayerPrefs.HasKey("language"))
         {
+            PlayerPrefs.SetInt("rebornings", 3);
             switch (Application.systemLanguage)
             {
                 case SystemLanguage.English:

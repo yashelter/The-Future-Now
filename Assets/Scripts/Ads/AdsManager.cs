@@ -61,14 +61,10 @@ public class AdsManager : MonoBehaviour, IUnityAdsListener
     {
         if (placementId == "rewardedVideo" && showResult == ShowResult.Finished)
         {
-            Time.timeScale = 1;
-            player.BeAlive();
             // награда для пользователя за то, что посмотрел ролик.
         }
         else if (showResult == ShowResult.Skipped || showResult == ShowResult.Failed)
         {
-            Time.timeScale = 1;
-            Debug.LogWarning("Реклама была пропущена или возникла ошибка");
             // не вознаграждайте пользователя за пропуск объявления.
         }
     }
