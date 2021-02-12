@@ -45,12 +45,12 @@ public class PlayerController : Entity
             float x = 0, y = 0;
             if (controlType == controlTypes.PC)
             {
-                x = Input.GetAxis("Horizontal"); 
-                y = Input.GetAxis("Vertical") > 0 ? 1 : 0; ;
+                x = Input.GetAxis("Horizontal");
+                y = Input.GetAxis("Vertical") > 0 ? 1 : 0;
             }
             else if (controlType == controlTypes.Phone)
             {
-                x = movingJoystick.Horizontal; 
+                x = movingJoystick.Horizontal;
                 y = movingJoystick.Vertical;
             }
             // timer for jump
@@ -62,12 +62,10 @@ public class PlayerController : Entity
             {
                 x = 0; y = 0;
             }
-            // all player movements
-            
             Move(x, y);
-        }
+            // all player movements
+        }       
     }
-    
     private void Save()
     {
         SaveSystem.SavePlayer(this);
@@ -93,8 +91,7 @@ public class PlayerController : Entity
     }
     public void ReturnAlive()
     {
-        // -5 часов жизни, тут чисто показ рекламы и закулисные действия
-        ads.Show("rewardedVideo");
+        BeAlive();
         Debug.Log("Show rewarded video");
         
     }

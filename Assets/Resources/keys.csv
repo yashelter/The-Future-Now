@@ -1,5 +1,4 @@
 key;ru;eng
-lang;Русский;English
 backBtn;Назад;Back
 restoreDef;Сбросить прогресс;Restore Progress
 settingsBTN;Настройки;Settings
@@ -76,3 +75,7 @@ dia12.Jane.5;Сущие копейки. Наверное, это было одн
 day4;11 Июля 2045 ;not Translated((
 dia13.John.1;Припасы начинают заканчиваться. Я поеду за припасами. ;not Translated((
 dia13.Jane.2;Ок, будь осторожен. ;not Translated((
+reborn;Переродится, будет затрачено очко возрождения, если его нет, будет перезагружен уровень;not Translated((
+remainRebornings;Осталось возрождений —;not Translated((
+eng;Английский;English
+ru;Русский;Russian
