@@ -18,7 +18,7 @@ public class TextSetter : MonoBehaviour
     }
     public void UpdateText()
     {
-        lang.UpdateDict();
+        Start();
         text.text = lang.GetKey(key);
     }
 

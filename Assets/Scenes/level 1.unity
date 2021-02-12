@@ -379,7 +379,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3235862415509337204, guid: fe0cc0679fb472d43a26543ab197b2eb, type: 3}
       propertyPath: m_Name
-      value: Localization and ads System
+      value: Localization
       objectReference: {fileID: 0}
     - target: {fileID: 3235862415509337206, guid: fe0cc0679fb472d43a26543ab197b2eb, type: 3}
       propertyPath: m_RootOrder

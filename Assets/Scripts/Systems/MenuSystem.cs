@@ -1,10 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 public class MenuSystem : MonoBehaviour
 {
+    public TextMeshProUGUI advText;
+    public void Start()
+    {
+        SetAdvText();
+    }
     public void LoadGame()
     {
         if (!PlayerPrefs.HasKey("level"))
@@ -30,6 +36,12 @@ public class MenuSystem : MonoBehaviour
             File.Delete(path);
         }
         // сбросить настройки
+    }
+    public void SetAdvText()
+    {
+        advText.text = FindObjectOfType<LocalizationSystem>().GetKey("advText1") + " "
+            + PlayerPrefs.GetInt("rebornings", 0) + " " 
+            + FindObjectOfType<LocalizationSystem>().GetKey("advText2");
     }
    
 }

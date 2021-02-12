@@ -40,7 +40,7 @@ public class PlayerController : Entity
 
     protected override void FixedUpdate()
     {
-        if (playerAnimator.GetBool("Alive"))
+        if (playerAnimator.GetBool("Alive") && !isReborning)
         {
             float x = 0, y = 0;
             if (controlType == controlTypes.PC)
@@ -92,13 +92,10 @@ public class PlayerController : Entity
     public void ReturnAlive()
     {
         BeAlive();
-        Debug.Log("Show rewarded video");
         
     }
     public void EndedReturn()
     {
-        attackBtn.gameObject.SetActive(true);
-        movingJoystick.gameObject.SetActive(true);
         isReborning = false;
         
     }
@@ -108,7 +105,7 @@ public class PlayerController : Entity
         playerAnimator.SetBool("Reborn", true);
         playerAnimator.SetBool("Alive", true);
         isReborning = true;
-        StartCoroutine("NonDestroable"); // Даёт бессмертие на время
+        StartCoroutine("NonDestroable"); // Даёт Бессмертие на время
     }
     public bool GetLife()
     {

@@ -97,7 +97,7 @@ public class Entity : MonoBehaviour, Damageable
             playerAnimator.SetBool("Jumping", !isJumping);
             timer = timerTime;
         }
-        else if (!isJumping && !isLanding && Mathf.Abs(playerRB.velocity.y) > 5f && !(grounded))
+        else if (!isJumping && !isLanding && Mathf.Abs(playerRB.velocity.y) > 2f && !(grounded))
         {
 
             isLanding = !isLanding;
