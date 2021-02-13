@@ -14,7 +14,6 @@ public class Entity : MonoBehaviour, Damageable
     public Transform feetPos1;
     public Transform feetPos2;
     public LayerMask ground;
-    [HideInInspector]
 
     public bool isHitable = true;
 

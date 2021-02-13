@@ -7,8 +7,14 @@ public class AIController : Entity
     // playerTransform - Transmorm текущей штуки - public
     public float warriorEyeRange = 25f;
     public float attackVision = 7f;
+
+    public Transform maxPosLeft;
+    public Transform maxPosRight;
+
     protected Transform targetTransform;
+
     public AITypes AIType;
+
     protected float offset = 6f;
     public enum AITypes
     {
@@ -68,7 +74,16 @@ public class AIController : Entity
             mod = 1;
             CheckAttack();
         }
-        Move(moveSpeed * mod, 0);
+        if(mod != 0 && (gameObject.transform.position.x + moveSpeed * mod < maxPosRight.position.x &&
+                        gameObject.transform.position.x + moveSpeed * mod > maxPosLeft.position.x))
+        {
+            Move(moveSpeed * mod, 0);
+        }
+        else
+        {
+            Move(0, 0);
+        }
+        
     }
     protected void CheckAttack()
     {
