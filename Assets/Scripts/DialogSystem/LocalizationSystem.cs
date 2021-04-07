@@ -76,7 +76,7 @@ public class LocalizationSystem : MonoBehaviour
         UpdateTexts();
         
     }
-    // обновляем тесты(нужно только для меню)
+    // обновляем тексты(нужно только для меню)
     public void UpdateTexts()
     {
         UpdateDict();
